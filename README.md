@@ -1,109 +1,177 @@
-[![hire-badge](https://img.shields.io/badge/Consult%20/%20Hire%20Shabab-Click%20to%20Contact-brightgreen)](mailto:shababsaifi@gmail.com) [![Twitter Follow](https://img.shields.io/twitter/follow/shabab_ali?label=Follow%20Shabab%20on%20Twitter&style=social)](https://twitter.com/shabab_ali)
+# Final Capstone Project's API
 
-# Dhaka Hospital - Book appointment with doctor.
+This is part of Microverse's final capstone project.
 
-> In this project, I developed backend APIs for a hospital to book an appointment with doctor. See frontend project [here]()
-> User can send a post request to signup and login.
-> Logged in user is assigned a json web token for authentication/authorization.
-> Only authorized users can see the doctors and book an appointment.
-> Unit tests are written using RSpec and Shoulda matcher.
+In this repository, I build an API with data for dragon flying instructors, classes, and user profiles based in the characters of [How to Train Your Dragon][httyd] series.
+
+## Table of contents
+
+- [Final Capstone Project's API](#final-capstone-projects-api)
+  - [Table of contents](#table-of-contents)
+  - [About](#about)
+  - [The back-end API](#the-back-end-api)
+    - [Data in the user table](#data-in-the-user-table)
+    - [Data in instructors table](#data-in-instructors-table)
+    - [Data in fly_classes table](#data-in-flyclasses-table)
+    - [How to use it](#how-to-use-it)
+      - [End points](#end-points)
+      - [Local usage](#local-usage)
+    - [Technologies used](#technologies-used)
+  - [Contact](#contact)
+  - [Acknowledgments](#acknowledgments)
 
 
-## Built With
+## About
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4.2
-- Gems used for testing: Capybara, Rspec-Rails, and Shoulda-matchers.
+The project's goal was to create a book of appointment. The back-end should be a REST API done with Ruby on Rails. The front-end should be done with React and Redux. This README will be focused on the API. For more details about the project visit the front-end's repository.
 
-## Live Demo
-See live demo [here]()
+The project's assignment can be seen [here][assignment].
+
+The front-end repository can be found [here][front-end].
+
+Link to a live version [here][live-version].
+
+Repository: https://github.com/phalado/final-capstone-api/
 
 
-## Getting Started
+## The back-end API
 
-To get a local copy up and running follow these steps:
+The back-end consists of an API that receives a message and answers it with data from a database. The database is composed of three tables, to know, one for user data, one for instructors data, and one for classes.
 
-### Prerequisites
 
-- Ruby: 2.6.3
-- Rails: 5.2.3
-- Postgres: >=9.5
-- Git
+### Data in the user table
 
-### Usage
+* name
+* email
+* password_digest
 
-- Fork/Clone this project to your local machine
-- Open folder in your local enviroment and run thes lines of code to get started:
 
-Install gems with:
+### Data in instructors table
 
-```Ruby
-    bundle install
-```
+* name
+* dragonType
+* dragonName
+* instImage - Instructor's image
+* dragonImage - Dragon's image
 
-Setup database with:
 
-```Ruby
-   rails db:create
-   rails db:migrate
-   rails db:seed
-```
+### Data in fly_classes table
 
-Start server with:
+* classTime
+* instructor_id
+* status - Boolean (not used)
+* user_id
 
-```Ruby
-    rails s -p 3001
-```
 
-Then open a web page and go to [port 3001 on your local machine.](http://localhost:3001)
+### How to use it
 
-### APIs
+Base URL: https://dragon-test-drive-api.herokuapp.com
 
-Public API url is []()
-You can test all the API endpoints in any API testing tools like Postman.
-See API documentation [here](https://documenter.getpostman.com/view/3801944/TVmMfcaU)
 
-## Running tests
+#### End points
 
-```Ruby
-    bundle exec rpsec
-```
+*/users*
 
-## Deployment
+* **GET** - to receive an object with all users
+* **POST** - to create a new user - with parameters:
+  * name
+  * email
+  * password
+  * password_confirmation
 
-Follow vendor specific instructions to deploy the application.
+*/users/:id*
 
-## Potential Future Updates
-- Add table for departments
-- Success email after creating appointment
-- Online payment
+* **PATCH** - to edit a user - with parameters:
+  * name
+  * email
+  * password
+  * password_confirmation
+* **GET** - to receive a specific user's data
+* **DELETE** - to delete a user
 
-## Author
+*/login*
 
-👤 ****
+* **GET** - to check login parameters - with parameters:
+  * email
+  * password
 
-## 🤝 Contributing
+*/instructors*
 
-Contributions and feature requests are welcome!
+* **GET** - to receive an object with all users
+* **POST** - to create a new instructor - with parameters:
+  * name
+  * instImage
+  * dragonName
+  * dragonType
+  * dragonImage
 
-Start by:
+*instructors/id*
 
-- Forking the project
-- Cloning the project to your local machine
-- `cd` into the project directory
-- Run `git checkout -b your-branch-name`
-- Make your contributions
-- Push your branch up to your forked repository
-- Open a Pull Request with a detailed description to the development(or master if not available) branch of the original project for a review
+* **GET** - to receive a specific instructor's data
 
-## Show your support
+*/fly_classes*
 
-Give a ⭐️ if you like this project!
+* **GET** - to receive an object with all the classes
+* **POST** - to create a new class - with parameters:
+  * instructor_id
+  * user_id
+  * classTime
+  * status
+
+*fly_classes/:id*
+
+* **DELETE** - to delete a specific class
+
+
+#### Local usage
+
+To use this API locally, follow the steps:
+
+* Download the repository as zip
+* Extract the data
+* Open your terminal and navigate to repository's folder
+* Run:
+  * Bundle install
+  * Rails db:create
+  * Rails db:migrate
+  * Rails db:seed
+  * Rails server
+* Eat a candy bar
+
+
+### Technologies used
+
+To create this project I used:
+
+* Ruby on Rails
+* bcrypt gem
+* Heroku
+* Postgresql
+* rspec
+
+
+## Contact
+
+Author: Raphael Cordeiro
+
+Follow me on [Twitter][rapha-twitter],  visit my [Github portfolio][rapha-github], my [Linkedin][rapha-linkedin] or my [personal portfolio][rapha-personal].
+
 
 ## Acknowledgments
 
-- [Microverse](https://www.microverse.org)
+[Microverse][mcvs]
 
-## 📝 License
+I have no business rights about the characters used in this API. This is only for learning purposes. All characters belong to [DreamWorks][httyd].
 
-This project is [MIT](https://opensource.org/licenses/MIT) licensed.
+
+
+<!-- Links -->
+[assignment]: https://www.notion.so/Final-Capstone-Project-Book-an-Appointment-41ded2ee99ff4fe4becf91acb332ca26
+[live-version]: https://features--berksacademy.netlify.app/
+[front-end]: https://github.com/phalado/final-capstone
+[httyd]: https://www.dreamworks.com/how-to-train-your-dragon
+[mcvs]: https://www.microverse.org/
+[rapha-github]: https://github.com/phalado
+[rapha-twitter]: https://twitter.com/phalado
+[rapha-linkedin]: https://www.linkedin.com/in/raphael-cordeiro/
+[rapha-personal]: https://phalado.github.io/

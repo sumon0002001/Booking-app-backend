@@ -1,8 +1,8 @@
 [![hire-badge](https://img.shields.io/badge/Consult%20/%20Hire%20Shabab-Click%20to%20Contact-brightgreen)](mailto:shababsaifi@gmail.com) [![Twitter Follow](https://img.shields.io/twitter/follow/shabab_ali?label=Follow%20Shabab%20on%20Twitter&style=social)](https://twitter.com/shabab_ali)
 
-# ABC Hospital - Book appointment with doctor.
+# Dhaka Hospital - Book appointment with doctor.
 
-> In this project, I developed backend APIs for a hospital to book an appointment with doctor. See frontend project [here](https://github.com/alishabab/appointment-booking-frontend)
+> In this project, I developed backend APIs for a hospital to book an appointment with doctor. See frontend project [here]()
 > User can send a post request to signup and login.
 > Logged in user is assigned a json web token for authentication/authorization.
 > Only authorized users can see the doctors and book an appointment.
@@ -16,7 +16,7 @@
 - Gems used for testing: Capybara, Rspec-Rails, and Shoulda-matchers.
 
 ## Live Demo
-See live demo [here](https://glacial-peak-60683.herokuapp.com//)
+See live demo [here]()
 
 
 ## Getting Started
@@ -59,7 +59,7 @@ Then open a web page and go to [port 3001 on your local machine.](http://localho
 
 ### APIs
 
-Public API url is [https://frozen-river-95471.herokuapp.com/](https://frozen-river-95471.herokuapp.com/)
+Public API url is []()
 You can test all the API endpoints in any API testing tools like Postman.
 See API documentation [here](https://documenter.getpostman.com/view/3801944/TVmMfcaU)
 
@@ -80,12 +80,7 @@ Follow vendor specific instructions to deploy the application.
 
 ## Author
 
-👤 **Shabab Ali**
-
-- Github: [@alishabab](https://github.com/alishabab)
-- Twitter: [@shabab_ali](https://twitter.com/shabab_ali)
-- LinkedIn: [shababali](https://www.linkedin.com/in/shababali/)
-- Email: [shababsaifi@gmail.com](mailto:shababsaifi@gmail.com)
+👤 ****
 
 ## 🤝 Contributing
 

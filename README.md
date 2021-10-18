@@ -25,7 +25,7 @@ In this repository, I build an API with data for dragon flying instructors, clas
 
 The project's goal was to create a book of appointment. The back-end should be a REST API done with Ruby on Rails. The front-end should be done with React and Redux. This README will be focused on the API. For more details about the project visit the front-end's repository.
 
-The project's assignment can be seen [here][assignment].
+
 
 The front-end repository can be found [here][front-end].
 
@@ -150,28 +150,19 @@ To create this project I used:
 * rspec
 
 
-## Contact
+## Author
 
-Author: Raphael Cordeiro
-
-Follow me on [Twitter][rapha-twitter],  visit my [Github portfolio][rapha-github], my [Linkedin][rapha-linkedin] or my [personal portfolio][rapha-personal].
 
 
 ## Acknowledgments
 
 [Microverse][mcvs]
 
-I have no business rights about the characters used in this API. This is only for learning purposes. All characters belong to [DreamWorks][httyd].
+I have no business rights about the characters used in this API. This is only for learning purposes. All characters belong to [DreamWorks].
 
 
 
 <!-- Links -->
-[assignment]: https://www.notion.so/Final-Capstone-Project-Book-an-Appointment-41ded2ee99ff4fe4becf91acb332ca26
-[live-version]: https://features--berksacademy.netlify.app/
-[front-end]: https://github.com/phalado/final-capstone
-[httyd]: https://www.dreamworks.com/how-to-train-your-dragon
-[mcvs]: https://www.microverse.org/
-[rapha-github]: https://github.com/phalado
-[rapha-twitter]: https://twitter.com/phalado
-[rapha-linkedin]: https://www.linkedin.com/in/raphael-cordeiro/
-[rapha-personal]: https://phalado.github.io/
+
+[live-version]:
+[front-end]: 

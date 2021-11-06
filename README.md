@@ -151,7 +151,11 @@ To create this project I used:
 
 
 ## Author
+👤 **Mir Rawshan Ali**
 
+- GitHub: [@sumon0002009](https://github.com/sumon0002001)
+- Twitter: [@sumon0002009](https://twitter.com/Sumon0002009)
+- LinkedIn: [Mir Rawshan Ali](https://www.linkedin.com/in/mir-rawshan-ali-27b6a5198/)
 
 
 ## Acknowledgments

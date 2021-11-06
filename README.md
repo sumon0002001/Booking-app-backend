@@ -31,7 +31,7 @@ The front-end repository can be found [here][front-end].
 
 Link to a live version [here][live-version].
 
-Repository: https://github.com/phalado/final-capstone-api/
+Repository: https://github.com/sumon0002001/booking-app-backend/tree/development
 
 
 ## The back-end API

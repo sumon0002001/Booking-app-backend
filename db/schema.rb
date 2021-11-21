@@ -10,37 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_160253) do
+ActiveRecord::Schema.define(version: 2020_11_09_095939) do
 
-  create_table "fly_classes", force: :cascade do |t|
-    t.datetime "classTime"
-    t.integer "instructor_id", null: false
-    t.string "status"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.date "date"
+    t.string "city"
+    t.string "vehicle"
+    t.string "model"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.index ["instructor_id"], name: "index_fly_classes_on_instructor_id"
-    t.index ["user_id"], name: "index_fly_classes_on_user_id"
-  end
-
-  create_table "instructors", force: :cascade do |t|
-    t.string "name"
-    t.string "dragonType"
-    t.string "dragonName"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "instImage"
-    t.string "dragonImage"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "username"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "fly_classes", "instructors"
-  add_foreign_key "fly_classes", "users"
+  create_table "vehicles", force: :cascade do |t|
+    t.string "name"
+    t.string "model"
+    t.string "transmission"
+    t.string "fee"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "photo"
+  end
+
+  add_foreign_key "appointments", "users"
 end

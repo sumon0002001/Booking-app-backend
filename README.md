@@ -1,172 +1,217 @@
-# Final Capstone Project's API
+# Vehicle Booking API
 
-This is part of Microverse's final capstone project.
-
-In this repository, I build an API with data for dragon flying instructors, classes, and user profiles based in the characters of [How to Train Your Dragon][httyd] series.
-
-## Table of contents
-
-- [Final Capstone Project's API](#final-capstone-projects-api)
-  - [Table of contents](#table-of-contents)
-  - [About](#about)
-  - [The back-end API](#the-back-end-api)
-    - [Data in the user table](#data-in-the-user-table)
-    - [Data in instructors table](#data-in-instructors-table)
-    - [Data in fly_classes table](#data-in-flyclasses-table)
-    - [How to use it](#how-to-use-it)
-      - [End points](#end-points)
-      - [Local usage](#local-usage)
-    - [Technologies used](#technologies-used)
-  - [Contact](#contact)
-  - [Acknowledgments](#acknowledgments)
+> This is a Ruby on Rails API built to be consumed by any front-end application for the purposes of booking vehicles.
 
 
-## About
+## Built With
 
-The project's goal was to create a book of appointment. The back-end should be a REST API done with Ruby on Rails. The front-end should be done with React and Redux. This README will be focused on the API. For more details about the project visit the front-end's repository.
+- Ruby v2.7.0
+- Ruby on Rails 6.0.3.4
 
+## API Documentation
+This is version one (V1) for this API. The base URL for all the endpoints is `https://vehicle-booking-api.herokuapp.com/v1/`
+### Login
+This API endpoint is used for logging in a user into the system.
+#### Endpoint
+`https://vehicle-booking-api.herokuapp.com/v1/login`
+#### Sample Request
+````
+curl -X POST \
+  https://vehicle-booking-api.herokuapp.com/v1/login \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/x-www-form-urlencoded' \
+  -H 'postman-token: e329987e-2991-892f-e6dc-0af1957f4679' \
+  -d 'username=admin&password=password'
+````
+#### Sample Response
+````
+{
+    "user": {
+        "id": 1,
+        "username": "admin",
+        "password_digest": "$2a$12$pljN0EuO4Ui/FoKdVfgBhuXkrOEZSTSAHx/KKN8kOUk35IqGm7lwq",
+        "created_at": "2020-11-01T12:48:45.667Z",
+        "updated_at": "2020-11-01T12:48:45.667Z"
+    },
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oT7kSePnYs7eVIsRIzIi0UEC7XBclsrO3qrnXwic8Zg"
+}
+````
 
+### Register
+This API endpoint is used for registering new users to the system.
+#### Endpoint
+`https://vehicle-booking-api.herokuapp.com/v1/users`
+#### Sample Request
+````
+curl -X POST \
+  https://vehicle-booking-api.herokuapp.com/v1/users \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/x-www-form-urlencoded' \
+  -H 'postman-token: 50b3bb3c-2265-9661-694c-9b4ad44e4751' \
+  -d 'username=administrator&password=password'
+````
+#### Sample Response
+````
+{
+    "user": {
+        "id": 35,
+        "username": "administrator",
+        "password_digest": "$2a$12$N.nStVsShl06Y4ClZrazduac91SIp1GMPTwD1/CXLO31RdMtuX1ZK",
+        "created_at": "2020-11-06T20:06:34.492Z",
+        "updated_at": "2020-11-06T20:06:34.492Z"
+    },
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNX0.nLY4f5bGd_E9dJcpp-p1YdDcbaKasVj9hrP3zlfCkdE"
+}
+````
+### Vehicles
+This is the API endpoint related to vehicles in the system.
+#### Endpoint
+`https://vehicle-booking-api.herokuapp.com/v1/vehicles`
+#### Sample Request
+````
+curl -X GET \
+  https://vehicle-booking-api.herokuapp.com/v1/vehicles \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oT7kSePnYs7eVIsRIzIi0UEC7XBclsrO3qrnXwic8Zg' \
+  -H 'cache-control: no-cache' \
+  -H 'postman-token: 84b6ae2f-3a03-dcfd-8872-b76e9556c863'
+````
+#### Sample Response
+````
+[
+    {
+        "id": 1,
+        "name": "Toyota Rav 4",
+        "model": "2018",
+        "transmission": "Manual",
+        "fee": "4500",
+        "created_at": "2020-11-01T12:51:04.679Z",
+        "updated_at": "2020-11-01T12:51:04.679Z"
+    },
+    {
+        "id": 2,
+        "name": "Nissan Sentra",
+        "model": "2016",
+        "transmission": "Automatic",
+        "fee": "5000",
+        "created_at": "2020-11-04T07:52:20.658Z",
+        "updated_at": "2020-11-04T07:52:20.658Z"
+    }
+]
+````
+### Appointments
+This is the API endpoint related to appointments (bookings) in the system.
+#### Endpoint
+`https://vehicle-booking-api.herokuapp.com/v1/appointments`
+#### Sample Request
+````
+curl -X GET \
+  https://vehicle-booking-api.herokuapp.com/v1/appointments \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.oT7kSePnYs7eVIsRIzIi0UEC7XBclsrO3qrnXwic8Zg' \
+  -H 'cache-control: no-cache' \
+  -H 'postman-token: e84d3dbb-1582-ff27-4afa-8699cb4d5600'
+````
+#### Sample Response
+````
+[
+    {
+        "id": 1,
+        "date": "2020-12-22",
+        "city": "Accra",
+        "vehicle": "Toyota Rav4",
+        "model": "2018",
+        "user_id": 1,
+        "created_at": "2020-11-01T12:51:04.821Z",
+        "updated_at": "2020-11-01T12:51:04.821Z"
+    },
+    {
+        "id": 2,
+        "date": "2020-11-05",
+        "city": "Adenta, Accra",
+        "vehicle": null,
+        "model": "2018",
+        "user_id": 1,
+        "created_at": "2020-11-05T17:45:58.384Z",
+        "updated_at": "2020-11-05T17:45:58.384Z"
+    }
+]
+````
+## Getting Started
 
-The front-end repository can be found [here][front-end].
+To get a local copy up and running follow these simple example steps.
 
-Link to a live version [here][live-version].
+### Prerequisites
 
-Repository: https://github.com/sumon0002001/booking-app-backend/tree/development
+Ruby: 2.7.0
+Rails: 6.0.3.4
+Postgres: >=9.5
 
+### Setup
 
-## The back-end API
+Install gems with:
 
-The back-end consists of an API that receives a message and answers it with data from a database. The database is composed of three tables, to know, one for user data, one for instructors data, and one for classes.
+```
+bundle install
+```
 
+Setup database with:
 
-### Data in the user table
+```
+   rails db:create
+   rails db:migrate
+```
 
-* name
-* email
-* password_digest
+Populate database with:
 
+```
+   rails db:seed
+```
 
-### Data in instructors table
+### Usage
 
-* name
-* dragonType
-* dragonName
-* instImage - Instructor's image
-* dragonImage - Dragon's image
+Start server with:
 
+```
+    rails server
+```
 
-### Data in fly_classes table
+Open `http://localhost:3000/` in your browser.
 
-* classTime
-* instructor_id
-* status - Boolean (not used)
-* user_id
+### Run tests
+Type the following in your terminal/command line to run tests for the API:
+```
+    rpsec
+```
 
+### Deployment
 
-### How to use it
-
-Base URL: https://dragon-test-drive-api.herokuapp.com
-
-
-#### End points
-
-*/users*
-
-* **GET** - to receive an object with all users
-* **POST** - to create a new user - with parameters:
-  * name
-  * email
-  * password
-  * password_confirmation
-
-*/users/:id*
-
-* **PATCH** - to edit a user - with parameters:
-  * name
-  * email
-  * password
-  * password_confirmation
-* **GET** - to receive a specific user's data
-* **DELETE** - to delete a user
-
-*/login*
-
-* **GET** - to check login parameters - with parameters:
-  * email
-  * password
-
-*/instructors*
-
-* **GET** - to receive an object with all users
-* **POST** - to create a new instructor - with parameters:
-  * name
-  * instImage
-  * dragonName
-  * dragonType
-  * dragonImage
-
-*instructors/id*
-
-* **GET** - to receive a specific instructor's data
-
-*/fly_classes*
-
-* **GET** - to receive an object with all the classes
-* **POST** - to create a new class - with parameters:
-  * instructor_id
-  * user_id
-  * classTime
-  * status
-
-*fly_classes/:id*
-
-* **DELETE** - to delete a specific class
-
-
-#### Local usage
-
-To use this API locally, follow the steps:
-
-* Download the repository as zip
-* Extract the data
-* Open your terminal and navigate to repository's folder
-* Run:
-  * Bundle install
-  * Rails db:create
-  * Rails db:migrate
-  * Rails db:seed
-  * Rails server
-* Eat a candy bar
-
-
-### Technologies used
-
-To create this project I used:
-
-* Ruby on Rails
-* bcrypt gem
-* Heroku
-* Postgresql
-* rspec
-
+This API has been deployed on [heroku.](https://www.heroku.com) It is acccessible at `https://vehicle-booking-api.herokuapp.com/v1/`.
 
 ## Author
+
+👤 **Christopher Amanor**
+
 👤 **Mir Rawshan Ali**
 
 - GitHub: [@sumon0002009](https://github.com/sumon0002001)
 - Twitter: [@sumon0002009](https://twitter.com/Sumon0002009)
 - LinkedIn: [Mir Rawshan Ali](https://www.linkedin.com/in/mir-rawshan-ali-27b6a5198/)
 
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Kindly give this repository a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-[Microverse][mcvs]
+- Project specifications by [Microverse](https://www.microverse.org).
 
-I have no business rights about the characters used in this API. This is only for learning purposes. All characters belong to [DreamWorks].
+- Images downloaded from [U.S. News](https://cars.usnews.com/).
 
+## 📝 License
 
-
-<!-- Links -->
-
-[live-version]:
-[front-end]: 
+This project is licensed under the MIT License.

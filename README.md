@@ -188,8 +188,6 @@ This API has been deployed on [heroku.](https://www.heroku.com) It is acccessibl
 
 ## Author
 
-👤 **Christopher Amanor**
-
 👤 **Mir Rawshan Ali**
 
 - GitHub: [@sumon0002009](https://github.com/sumon0002001)
